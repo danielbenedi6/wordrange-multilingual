@@ -1,0 +1,14 @@
+[
+  {
+    "name": "English",
+    "code": "en",
+    "flag": "/assets/images/en.svg",
+    "wordlist": "/assets/wordlist/en.json"
+  },
+  {
+    "name": "Spanish",
+    "code": "es",
+    "flag": "/assets/images/es.svg",
+    "wordlist": "/assets/wordlist/es.json"
+  }
+]
