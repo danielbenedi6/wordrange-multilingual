@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Container for centralizing content */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Word container styles */
+.word-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px; /* Adds space between each word */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Common Word Box Styling */
+.word {
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+  background-color: #f8f8f8; /* Light pastel gray */
+  border: 1px solid #e0e0e0; /* Subtle border */
+  font-size: 18px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  max-width: 90%; /* Keeps words from stretching too wide */
+}
+
+/* Hover effect for words */
+.word:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the random word when the game ends */
+.correct-word {
+  background-color: #a8d5ba; /* Pastel green */
+  color: #2a5d46; /* Darker green for contrast */
+}
+
+/* Input container for better alignment */
+.input-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Input field styling */
+.input-field {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f0e1e1; /* Pastel pink */
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+/* Focus state for input field */
+.input-field:focus {
+  border-color: #007bff;
+}
+
+/* Styles for mobile responsiveness */
+@media (max-width: 600px) {
+  .word {
+    font-size: 16px; /* Slightly smaller font size on mobile */
+    padding: 12px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .input-field {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+/* Container for centralizing the content */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9f9; /* Light background color */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Title styling */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Container for the language buttons */
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of buttons on small screens */
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Individual language button styling */
+.language-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid #007bff; /* Border color */
+  border-radius: 12px;
+  width: 120px;
+  height: 150px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #007bff;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Button hover effect */
+.language-btn:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.2); /* Subtle shadow effect */
+}
+
+/* Image (flag) styling */
+.language-flag {
+  width: 50px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Text (language name) styling */
+.language-name {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem; /* Smaller font size on mobile */
+  }
+
+  .language-btn {
+    width: 100px; /* Adjust button size on mobile */
+    height: 120px;
+  }
+
+  .language-name {
+    font-size: 1rem;
   }
 }
