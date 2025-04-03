@@ -6,7 +6,8 @@
     "wordlist": "/assets/wordlist/en.json",
     "i18n" : {
       "user_input": "Type your guess here...",
-      "word_not_found": "This word is not in the list. 😱 Try again!"
+      "word_not_found": "This word is not in the list. 😱 Try again!",
+      "how_to": "## How to Play\n\nGuess the secret word! Type a word and press **Enter**.\n\n- If your word is correct, you win!\n- If your word comes **before** the secret word alphabetically, it will be added 'before'.\n- If your word comes **after**, it will be added 'after'.\n- If the word is not in the dictionary, you'll see an error message.\n\nKeep guessing until you find the secret word!"
     }
   },
   {
@@ -16,7 +17,8 @@
     "wordlist": "/assets/wordlist/es.json",
     "i18n" : {
       "user_input": "Escribe aquí tu intento...",
-      "word_not_found": "No conocemos esa palabra. 😱 ¡Intentaló de nuevo!"
+      "word_not_found": "No conocemos esa palabra. 😱 ¡Intentaló de nuevo!",
+      "how_to": "## Cómo jugar\n\n¡Adivina la palabra secreta! Escribe una palabra y presiona **Enter**.\n\n- Si tu palabra es correcta, ¡ganas!\n- Si tu palabra viene **antes** de la palabra secreta alfabéticamente, se añadirá a la lista 'antes'.\n- Si tu palabra viene **después**, se añadirá a la lista 'después'.\n- Si la palabra no está en el diccionario, verás un mensaje de error.\n\n¡Sigue intentando hasta encontrar la palabra secreta!"
     }
   }
 ]

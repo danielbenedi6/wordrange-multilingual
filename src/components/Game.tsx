@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Markdown from 'react-markdown'
 import { Language } from "./Input";
 
 function capitalizeFirstLetter(val: string) {
@@ -92,6 +93,9 @@ const Game = ({ language }: { language: Language }) => {
                         {word}
                     </div>
                 ))}
+            </div>
+            <div  className="markdown-container">
+                <Markdown>{language.i18n.how_to}</Markdown>
             </div>
         </div>
     );
