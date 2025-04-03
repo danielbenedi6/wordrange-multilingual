@@ -3,12 +3,20 @@
     "name": "English",
     "code": "en",
     "flag": "/assets/images/en.svg",
-    "wordlist": "/assets/wordlist/en.json"
+    "wordlist": "/assets/wordlist/en.json",
+    "i18n" : {
+      "user_input": "Type your guess here...",
+      "word_not_found": "This word is not in the list. 😱 Try again!"
+    }
   },
   {
     "name": "Spanish",
     "code": "es",
     "flag": "/assets/images/es.svg",
-    "wordlist": "/assets/wordlist/es.json"
+    "wordlist": "/assets/wordlist/es.json",
+    "i18n" : {
+      "user_input": "Escribe aquí tu intento...",
+      "word_not_found": "No conocemos esa palabra. 😱 ¡Intentaló de nuevo!"
+    }
   }
 ]

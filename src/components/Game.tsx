@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { Language } from "./Input";
 
 function capitalizeFirstLetter(val: string) {
     return val.charAt(0).toUpperCase() + val.slice(1);
 }
 
 
-const Game = ({ wordlistPath }: { wordlistPath: string }) => {
+const Game = ({ language }: { language: Language }) => {
     const [words, setWords] = useState<string[]>([]);
     const [wordsBefore, setWordsBefore] = useState<string[]>([]);
     const [wordsAfter, setWordsAfter] = useState<string[]>([]);
@@ -15,7 +16,7 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
     const [errorMessage, setErrorMessage] = useState<string>("");
 
     useEffect(() => {
-        fetch(process.env.PUBLIC_URL + wordlistPath)
+        fetch(process.env.PUBLIC_URL + language.wordlist)
             .then((res) => res.json())
             .then((data) => data.map((word:string) => capitalizeFirstLetter(word)))
             .then((data) => {
@@ -26,7 +27,7 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
                 setWordsAfter([data[data.length - 1]])
             })
             .catch((error) => console.error("Error loading words:", error));
-    }, [wordlistPath]);
+    }, [language.wordlist]);
 
     // Handle input changes
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,18 +39,15 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
             if(userInput === randomWord) { // Word is match
-                console.log("Found!");
                 setEndGame(true);
             } else if(!words.includes(userInput)) { // Word is not in list
-                console.log("Not in list!");
-                setErrorMessage("This word is not in the list. Try again!"); // Set error message
+                setErrorMessage(language.i18n.word_not_found); // Set error message
                 setUserInput(""); // Clear input field after submitting
             } else { // Otherwise
-                console.log("Keep trying");     
                 if(userInput < randomWord) {
-                    setWordsBefore([...wordsBefore, userInput].sort())
+                    setWordsBefore([...wordsBefore, userInput].sort((a, b) => a.localeCompare(b)))
                 } else {
-                    setWordsAfter([...wordsAfter, userInput].sort())
+                    setWordsAfter([...wordsAfter, userInput].sort((a, b) => a.localeCompare(b)))
                 }         
                 setUserInput(""); // Clear input field after submitting
             }
@@ -60,7 +58,7 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
         <div className="container">
             <div className="word-container">
                 {wordsBefore.map((word, index) => (
-                    <div className="word">
+                    <div key={index} className="word">
                         {word}
                     </div>
                 ))}
@@ -78,7 +76,7 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
                         value={userInput}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyPress}
-                        placeholder="Type your guess here..."
+                        placeholder={language.i18n.user_input}
                         className="input-field"
                     />
                     {errorMessage && (
@@ -90,7 +88,7 @@ const Game = ({ wordlistPath }: { wordlistPath: string }) => {
             )}
             <div className="word-container">
                 {wordsAfter.map((word, index) => (
-                    <div className="word">
+                    <div key={index} className="word">
                         {word}
                     </div>
                 ))}

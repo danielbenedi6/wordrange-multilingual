@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
+import { Language } from "./Input";
 
-interface Language {
-    name: string;
-    code: string;
-    flag: string;
-    wordlist: string;
-}
-
-const LanguageSelector = ({ onSelect }: { onSelect: (wordlist: string) => void }) => {
+const LanguageSelector = ({ onSelect }: { onSelect: (lang : Language) => void }) => {
     const [languages, setLanguages] = useState<Language[]>([]);
   
     useEffect(() => {
@@ -22,7 +16,7 @@ const LanguageSelector = ({ onSelect }: { onSelect: (wordlist: string) => void }
         <h2 className="title">Select Your Language</h2>
         <div className="button-container">
           {languages.map((lang) => (
-            <button key={lang.code} className="language-btn" onClick={() => onSelect(lang.wordlist)}>
+            <button key={lang.code} className="language-btn" onClick={() => onSelect(lang)}>
               <img
                 src={process.env.PUBLIC_URL + lang.flag}
                 alt={lang.name}

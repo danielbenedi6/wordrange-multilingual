@@ -2,16 +2,17 @@ import "./App.css";
 import { useState } from "react";
 import LanguageSelector from "./components/LanguageSelector";
 import Game from "./components/Game";
+import { Language } from "./components/Input";
 
 const App = () => {
-  const [wordlistPath, setWordlistPath] = useState<string | null>(null);
+  const [language, setLanguage] = useState<Language | null>(null);
 
   return (
     <div>
-      {!wordlistPath ? (
-        <LanguageSelector onSelect={(path) => setWordlistPath(path)} />
+      {!language ? (
+        <LanguageSelector onSelect={(path) => setLanguage(path)} />
       ) : (
-        <Game wordlistPath={wordlistPath} />
+        <Game language={language} />
       )}
     </div>
   );
