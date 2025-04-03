@@ -69,6 +69,9 @@ const Game = ({ language }: { language: Language }) => {
                     <div className="word correct-word">
                         {randomWord}
                     </div>
+                    <button className="replay-button" onClick={() => window.location.reload()}>
+                        {language.i18n.play_again}
+                    </button>
                 </div>
              ) : (
                 <div className="input-container">

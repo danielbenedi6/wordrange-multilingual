@@ -91,6 +91,23 @@
     }
 }
 
+.replay-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.replay-button:hover {
+  background-color: #0056b3;
+}
+
 /* Markdown Container */
 .markdown-container {
   background-color: #f8f9fa; /* Light gray background */
