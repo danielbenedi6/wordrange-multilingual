@@ -13,6 +13,11 @@ const LanguageSelector = ({ onSelect }: { onSelect: (lang : Language) => void })
   
     return (
       <div className="home-container">
+        <img
+          src={process.env.PUBLIC_URL + "/logo - big.svg"}
+          alt="logo"
+          className="logo"
+        />
         <h2 className="title">Select Your Language</h2>
         <div className="button-container">
           {languages.map((lang) => (

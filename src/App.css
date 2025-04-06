@@ -119,23 +119,6 @@
   line-height: 1.6;
 }
 
-/* Styles for mobile responsiveness */
-@media (max-width: 600px) {
-  .word {
-    font-size: 16px; /* Slightly smaller font size on mobile */
-    padding: 12px;
-  }
-
-  .input-field {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  .container {
-    padding: 15px;
-  }
-}
-
 /* Container for centralizing the content */
 .home-container {
   display: flex;
@@ -209,6 +192,20 @@
   color: #2c3e50;
 }
 
+.logo {
+  width: 25%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Optional hover animation */
+.logo:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   .title {
@@ -222,5 +219,24 @@
 
   .language-name {
     font-size: 1rem;
+  }
+
+  .logo {
+    width: 150px;
+    margin: 15px auto;
+  }
+
+  .word {
+    font-size: 16px; /* Slightly smaller font size on mobile */
+    padding: 12px;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .container {
+    padding: 15px;
   }
 }
