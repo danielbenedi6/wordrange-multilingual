@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Markdown from 'react-markdown'
 import { Language } from "./Input";
+import confetti from 'canvas-confetti';
 
 function capitalizeFirstLetter(val: string) {
     return val.charAt(0).toUpperCase() + val.slice(1);
@@ -30,6 +31,14 @@ const Game = ({ language }: { language: Language }) => {
             .catch((error) => console.error("Error loading words:", error));
     }, [language.wordlist]);
 
+    const triggerConfetti = () => {
+        confetti({
+          particleCount: 120,
+          spread: 100,
+          origin: { y: 0.6 },
+        });
+      };
+
     // Handle input changes
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(capitalizeFirstLetter(event.target.value).trim());
@@ -41,6 +50,7 @@ const Game = ({ language }: { language: Language }) => {
         if (event.key === "Enter") {
             if(userInput === randomWord) { // Word is match
                 setEndGame(true);
+                triggerConfetti(); // 🎉 trigger confetti when winning
             } else if(!words.includes(userInput)) { // Word is not in list
                 setErrorMessage(language.i18n.word_not_found); // Set error message
                 setUserInput(""); // Clear input field after submitting
