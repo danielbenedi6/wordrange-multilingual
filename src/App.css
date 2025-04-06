@@ -38,6 +38,7 @@
 
 /* Styling for the random word when the game ends */
 .correct-word {
+  margin-top: 10px;
   background-color: #a8d5ba; /* Pastel green */
   color: #2a5d46; /* Darker green for contrast */
 }
@@ -92,7 +93,7 @@
 }
 
 .replay-button {
-  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -102,6 +103,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
+  width: 95%;
 }
 
 .replay-button:hover {
@@ -204,6 +206,31 @@
 .logo:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.forfeit-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #fddede;
+  color: #a33;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.forfeit-btn:hover {
+  background-color: #fbb;
+  transform: scale(1.05);
+}
+
+.forfeit-label {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #888;
 }
 
 /* Mobile responsiveness */

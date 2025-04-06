@@ -16,6 +16,7 @@ const Game = ({ language }: { language: Language }) => {
     const [userInput, setUserInput] = useState<string>("");
     const [endGame, setEndGame] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
+    const [forfeited, setForfeited] = useState<boolean>(false);
 
     useEffect(() => {
         fetch(process.env.PUBLIC_URL + language.wordlist)
@@ -37,7 +38,13 @@ const Game = ({ language }: { language: Language }) => {
           spread: 100,
           origin: { y: 0.6 },
         });
-      };
+    };
+
+    const handleForfeit = () => {
+      setEndGame(true);
+      setForfeited(true);
+      // Optionally skip confetti
+    };
 
     // Handle input changes
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,7 +84,8 @@ const Game = ({ language }: { language: Language }) => {
             { endGame? (
                 <div className="word-container">
                     <div className="word correct-word">
-                        {randomWord}
+                    {randomWord}
+                    {forfeited && <span className="forfeit-label"> ({language.i18n.forfeit_message})</span>}
                     </div>
                     <button className="replay-button" onClick={() => window.location.reload()}>
                         {language.i18n.play_again}
@@ -110,6 +118,11 @@ const Game = ({ language }: { language: Language }) => {
             <div  className="markdown-container">
                 <Markdown>{language.i18n.how_to}</Markdown>
             </div>
+            {!endGame && (
+                <button className="forfeit-btn" onClick={handleForfeit}>
+                    {language.i18n.forfeit_button}
+                </button>
+            )}
         </div>
     );
 };
