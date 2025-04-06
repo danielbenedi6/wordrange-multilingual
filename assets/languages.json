@@ -14,7 +14,7 @@
     }
   },
   {
-    "name": "Spanish",
+    "name": "Español",
     "code": "es",
     "flag": "/assets/images/es.svg",
     "wordlist": "/assets/wordlist/es.json",
@@ -25,6 +25,62 @@
       "play_again": "Volver a jugar!",
       "forfeit_button": "Rendirse 😅",
       "forfeit_message": "¡Te has rendido!"
+    }
+  },
+  {
+    "name": "Deutsch",
+    "code": "de",
+    "flag": "/assets/images/de.svg",
+    "wordlist": "/assets/wordlist/de.json",
+    "i18n": {
+      "user_input": "Gib hier deinen Tipp ein...",
+      "word_not_found": "Dieses Wort steht nicht auf der Liste. 😱 Versuch's nochmal!",
+      "how_to": "## So wird gespielt\n\nErrate das geheime Wort! Gib ein Wort ein und drücke **Enter**.\n\n- Wenn dein Wort richtig ist, gewinnst du!\n- Wenn dein Wort **vor** dem geheimen Wort alphabetisch steht, wird es 'vorher' hinzugefügt.\n- Wenn dein Wort **nachher** kommt, wird es 'nachher' hinzugefügt.\n- Wenn das Wort nicht im Wörterbuch ist, erscheint eine Fehlermeldung.\n\nRate weiter, bis du das geheime Wort findest!",
+      "play_again": "Nochmal spielen!",
+      "forfeit_button": "Aufgeben 😅",
+      "forfeit_message": "Du hast aufgegeben!"
+    }
+  },
+  {
+    "name": "Français",
+    "code": "fr",
+    "flag": "/assets/images/fr.svg",
+    "wordlist": "/assets/wordlist/fr.json",
+    "i18n": {
+      "user_input": "Tape ta proposition ici...",
+      "word_not_found": "Ce mot n'est pas dans la liste. 😱 Réessaie !",
+      "how_to": "## Comment jouer\n\nDevine le mot secret ! Tape un mot et appuie sur **Entrée**.\n\n- Si ton mot est correct, tu gagnes !\n- Si ton mot vient **avant** le mot secret dans l'ordre alphabétique, il sera ajouté 'avant'.\n- S’il vient **après**, il sera ajouté 'après'.\n- Si le mot n'est pas dans le dictionnaire, un message d'erreur s'affichera.\n\nContinue à deviner jusqu'à trouver le mot secret !",
+      "play_again": "Rejouer !",
+      "forfeit_button": "Abandonner 😅",
+      "forfeit_message": "Tu as abandonné !"
+    }
+  },
+  {
+    "name": "Ελληνικά",
+    "code": "el",
+    "flag": "/assets/images/el.svg",
+    "wordlist": "/assets/wordlist/el.json",
+    "i18n": {
+      "user_input": "Πληκτρολόγησε την πρότασή σου εδώ...",
+      "word_not_found": "Η λέξη δεν υπάρχει στη λίστα. 😱 Δοκίμασε ξανά!",
+      "how_to": "## Πώς να παίξεις\n\nΜάντεψε τη μυστική λέξη! Πληκτρολόγησε μία λέξη και πάτα **Enter**.\n\n- Αν η λέξη είναι σωστή, κερδίζεις!\n- Αν η λέξη σου είναι **πριν** αλφαβητικά από τη μυστική, θα προστεθεί στα 'πριν'.\n- Αν είναι **μετά**, θα προστεθεί στα 'μετά'.\n- Αν η λέξη δεν υπάρχει στο λεξικό, θα εμφανιστεί μήνυμα σφάλματος.\n\nΣυνέχισε να μαντεύεις μέχρι να βρεις τη μυστική λέξη!",
+      "play_again": "Παίξε ξανά!",
+      "forfeit_button": "Παραίτηση 😅",
+      "forfeit_message": "Παραιτήθηκες!"
+    }
+  },
+  {
+    "name": "Svenska",
+    "code": "sv",
+    "flag": "/assets/images/sv.svg",
+    "wordlist": "/assets/wordlist/sv.json",
+    "i18n": {
+      "user_input": "Skriv din gissning här...",
+      "word_not_found": "Detta ord finns inte i listan. 😱 Försök igen!",
+      "how_to": "## Hur man spelar\n\nGissa det hemliga ordet! Skriv ett ord och tryck på **Enter**.\n\n- Om ditt ord är rätt vinner du!\n- Om ditt ord kommer **före** det hemliga alfabetiskt läggs det till före.\n- Om det kommer **efter**, läggs det till efter.\n- Om ordet inte finns i ordboken visas ett felmeddelande.\n\nFortsätt gissa tills du hittar det hemliga ordet!",
+      "play_again": "Spela igen!",
+      "forfeit_button": "Ge upp 😅",
+      "forfeit_message": "Du gav upp!"
     }
   }
 ]

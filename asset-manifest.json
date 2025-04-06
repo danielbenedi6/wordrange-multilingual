@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wordrange-multilingual/static/css/main.744586b0.css",
+    "main.css": "/wordrange-multilingual/static/css/main.d473c95b.css",
     "main.js": "/wordrange-multilingual/static/js/main.b5fb7b65.js",
     "static/js/453.742c12d1.chunk.js": "/wordrange-multilingual/static/js/453.742c12d1.chunk.js",
     "index.html": "/wordrange-multilingual/index.html",
-    "main.744586b0.css.map": "/wordrange-multilingual/static/css/main.744586b0.css.map",
+    "main.d473c95b.css.map": "/wordrange-multilingual/static/css/main.d473c95b.css.map",
     "main.b5fb7b65.js.map": "/wordrange-multilingual/static/js/main.b5fb7b65.js.map",
     "453.742c12d1.chunk.js.map": "/wordrange-multilingual/static/js/453.742c12d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.744586b0.css",
+    "static/css/main.d473c95b.css",
     "static/js/main.b5fb7b65.js"
   ]
 }
