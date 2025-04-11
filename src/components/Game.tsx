@@ -62,10 +62,10 @@ const Game = ({ language }: { language: Language }) => {
                 setErrorMessage(userInput + ": " + language.i18n.word_not_found); // Set error message
                 setUserInput(""); // Clear input field after submitting
             } else { // Otherwise
-                if(userInput < randomWord) {
-                    setWordsBefore([...wordsBefore, userInput].sort((a, b) => a.localeCompare(b)))
+                if(userInput.localeCompare(randomWord, language.code) < 0) {
+                    setWordsBefore([...wordsBefore, userInput].sort((a, b) => a.localeCompare(b, language.code)))
                 } else {
-                    setWordsAfter([...wordsAfter, userInput].sort((a, b) => a.localeCompare(b)))
+                    setWordsAfter([...wordsAfter, userInput].sort((a, b) => a.localeCompare(b, language.code)))
                 }         
                 setUserInput(""); // Clear input field after submitting
             }
