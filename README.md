@@ -72,8 +72,8 @@ The word lists used in this project come from high-quality linguistic corpora an
 |----------|--------|-------------|
 | :es: Spanish | [CORPES - CREA](https://www.rae.es/recursos/banco-de-datos/corpes) | A frequency dictionary based on the Real Academia Española's corpus. |
 | :gb: English | [SCOWL - English Word Lists](http://wordlist.aspell.net/) (`english-words.70`) | A widely used collection of English words from multiple dictionaries. |
-| :se: Swedish | [OpenDictData - Folkets Lexikon](https://github.com/open-dict-data/folkets_sv_en) | A collaborative Swedish-English dictionary maintained by the community. |
-| :gr: Greek | [KELLY Word List (CLARIN:EL)](https://clarin.ellak.gr) | A curated list of the most frequent modern Greek words used in learner resources. |
+| 🇸🇪 Swedish | [OpenDictData - Folkets Lexikon](https://github.com/open-dict-data/folkets_sv_en) | A collaborative Swedish-English dictionary maintained by the community. |
+| 🇬🇷: Greek | [KELLY Word List (CLARIN:EL)](https://clarin.ellak.gr) | A curated list of the most frequent modern Greek words used in learner resources. |
 | :fr: French | [Lexique 3.83](http://www.lexique.org/) | A rich lexical database with frequency, phonology, and morphology data for French. |
 | :de: German | [SUBTLEX-DE](http://crr.ugent.be/programs-data/subtitle-frequencies/subtlex-de) | Frequency-based word list compiled from film subtitles for German. |
 
