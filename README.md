@@ -1,46 +1,152 @@
-# Getting Started with Create React App
+![Logo](./public/logo%20-%20big.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🔤Word Range Multilingual
 
-## Available Scripts
+A minimalist, multilingual word-guessing game built with **React**. Think of it as a mash-up between *Wordle* and a dictionary hunt!
 
-In the project directory, you can run:
+🎯 **Guess the secret word** using alphabetical hints — is it before or after?
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🌍 Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- ✅ Multilingual support (English, Spanish, Swedish, Greek, French, German)
+- 🎯 Clean gameplay logic using alphabetical order
+- 🎉 Victory confetti and a forfeit option
+- ⚡ Static site with GitHub Pages (no backend!)
+- 🧩 Easily expandable with new languages or word lists
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Try It Live
 
-### `npm run build`
+👉 [Play the Game](https://danielbenedi6.github.io/wordrange-multilingual)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧠 How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- On startup, users select a language.
+- A random word is selected from the chosen language’s word list.
+- Users guess by typing a word and pressing Enter.
+- The game gives hints:
+  - If guess is **before** or **after** the secret word (alphabetically).
+  - If guess is **correct** → 🎉 confetti!
+  - If guess is **invalid** → ❌ error message.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🌐 Multilingual Support
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Languages are defined in a single file:  
+`/public/assets/languages.json`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Example structure:
+```json
+[
+  {
+    "name": "English",
+    "code": "en",
+    "flag": "/assets/flags/en.svg",
+    "wordlist": "/assets/wordlists/en.json",
+    "i18n": {
+      "user_input": "Type your guess here...",
+      "word_not_found": "This word is not in the list. 😱 Try again!",
+      "how_to": "## How to Play\n\nGuess the secret word...",
+      "play_again": "Play again!",
+      "forfeit_button": "Forfeit 😅",
+      "forfeit_message": "You gave up!"
+    }
+  }
+]
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+All labels and messages are stored inside the language object, making translation or adding new languages a breeze.
 
-## Learn More
+---
+## 📚 Word Sources
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The word lists used in this project come from high-quality linguistic corpora and frequency dictionaries to ensure both relevance and variety. Words were filtered to remove entries with dashes, apostrophes, spaces, commas, and limited to lengths between 3 and 12 characters.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Language | Source | Description |
+|----------|--------|-------------|
+| :es: Spanish | [CORPES - CREA](https://www.rae.es/recursos/banco-de-datos/corpes) | A frequency dictionary based on the Real Academia Española's corpus. |
+| :gb: English | [SCOWL - English Word Lists](http://wordlist.aspell.net/) (`english-words.70`) | A widely used collection of English words from multiple dictionaries. |
+| :se: Swedish | [OpenDictData - Folkets Lexikon](https://github.com/open-dict-data/folkets_sv_en) | A collaborative Swedish-English dictionary maintained by the community. |
+| :gr: Greek | [KELLY Word List (CLARIN:EL)](https://clarin.ellak.gr) | A curated list of the most frequent modern Greek words used in learner resources. |
+| :fr: French | [Lexique 3.83](http://www.lexique.org/) | A rich lexical database with frequency, phonology, and morphology data for French. |
+| :de: German | [SUBTLEX-DE](http://crr.ugent.be/programs-data/subtitle-frequencies/subtlex-de) | Frequency-based word list compiled from film subtitles for German. |
+
+## 🧩 Adding a New Language
+
+1. Create a new word list JSON file in `public/assets/wordlists/xx.json`.
+   - Format: an array of words (`["Apple", "Banana", "Cherry", ...]`)
+   - Filter out short/long words, words with punctuation, etc.
+
+2. Add a language entry to `languages.json`.
+
+3. Add a flag icon to `/public/assets/flags/`.
+
+4. Add the language to READNE and its source
+
+5. Done! It will appear automatically in the language selector.
+
+---
+
+## ⚙️ Development & Build
+
+### 🔧 Local Dev
+```bash
+npm install
+npm run dev
+```
+
+### 🏗️ Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 📦 Deployment (GitHub Pages)
+
+1. Add `homepage` field to `package.json`:
+```json
+"homepage": "https://yourusername.github.io/secret-word-game"
+```
+
+2. Build the project:
+```bash
+npm run build
+```
+
+3. Deploy using [gh-pages](https://www.npmjs.com/package/gh-pages):
+```bash
+npx gh-pages -d dist
+```
+
+GitHub will serve it at your configured homepage URL.
+
+---
+
+## 👥 Contributions Welcome!
+
+This project is open source and open to improvements:
+- Add new languages
+- Improve the UI/UX
+- Add more feedback during the game
+- Suggest features or forks!
+
+---
+
+## 📄 License
+
+MIT — free to use, modify, and share.
+
+---
+
+## 🙌 Acknowledgments
+
+- Word lists from sources like **CORPES**, **SCOWL**, **KELLY**, **Lexique**, **SUBTLEX-DE**
+- [react-markdown](https://github.com/remarkjs/react-markdown)
+- [react-confetti-explosion](https://github.com/belgattitude/react-confetti-explosion)
