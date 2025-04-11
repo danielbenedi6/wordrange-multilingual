@@ -59,7 +59,7 @@ const Game = ({ language }: { language: Language }) => {
                 setEndGame(true);
                 triggerConfetti(); // 🎉 trigger confetti when winning
             } else if(!words.includes(userInput)) { // Word is not in list
-                setErrorMessage(language.i18n.word_not_found); // Set error message
+                setErrorMessage(userInput + ": " + language.i18n.word_not_found); // Set error message
                 setUserInput(""); // Clear input field after submitting
             } else { // Otherwise
                 if(userInput < randomWord) {
