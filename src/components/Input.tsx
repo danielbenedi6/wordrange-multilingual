@@ -3,6 +3,7 @@ export interface i18n {
     word_not_found: string;
     how_to: string;
     play_again: string;
+    number_attempts: string;
     forfeit_button: string;
     forfeit_message: string;
 }
