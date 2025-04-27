@@ -19,18 +19,46 @@ const Game = ({ language }: { language: Language }) => {
     const [forfeited, setForfeited] = useState<boolean>(false);
 
     useEffect(() => {
-        fetch(process.env.PUBLIC_URL + language.wordlist)
-            .then((res) => res.json())
-            .then((data) => data.map((word:string) => capitalizeFirstLetter(word)))
-            .then((data) => {
-                setWords(data);
-                setRandomWord(data[Math.floor(Math.random() * (data.length - 2)) + 1]);
-
-                setWordsBefore([data[0]])
-                setWordsAfter([data[data.length - 1]])
-            })
-            .catch((error) => console.error("Error loading words:", error));
+        const savedGame = localStorage.getItem('gameState-${language.code}');
+        if(savedGame) {
+            const state = JSON.parse(savedGame);
+            setRandomWord(atob(state.randomWord));
+            setWords(state.words);
+            setWordsBefore(state.wordsBefore);
+            setWordsAfter(state.wordsAfter);
+            setEndGame(state.endGame);
+        } else {
+            fetch(process.env.PUBLIC_URL + language.wordlist)
+                .then((res) => res.json())
+                .then((data) => data.map((word:string) => capitalizeFirstLetter(word)))
+                .then((data) => {
+                    setWords(data);
+                    setRandomWord(data[Math.floor(Math.random() * (data.length - 2)) + 1]);
+    
+                    setWordsBefore([data[0]])
+                    setWordsAfter([data[data.length - 1]])
+                })
+                .catch((error) => console.error("Error loading words:", error));
+        }
     }, [language.wordlist]);
+
+    useEffect(() => {
+        if (randomWord) { // Only save if the game has started
+            const state = {
+                randomWord: btoa(randomWord),
+                words,
+                wordsBefore,
+                wordsAfter,
+                endGame
+            };
+            localStorage.setItem('gameState-${language.code}', JSON.stringify(state));
+        }
+    }, [randomWord, words, wordsBefore, wordsAfter, endGame]);
+
+    const resetGame = () => {
+        localStorage.removeItem('gameState-${language.code}');
+        window.location.reload();
+    };
 
     const triggerConfetti = () => {
         confetti({
@@ -87,7 +115,7 @@ const Game = ({ language }: { language: Language }) => {
                     {randomWord}
                     {forfeited && <span className="forfeit-label"> ({language.i18n.forfeit_message})</span>}
                     </div>
-                    <button className="replay-button" onClick={() => window.location.reload()}>
+                    <button className="replay-button" onClick={() => resetGame()}>
                         {language.i18n.play_again}
                     </button>
                 </div>
