@@ -11,7 +11,9 @@ function capitalizeFirstLetter(val: string) {
 const Game = ({ language }: { language: Language }) => {
     const [words, setWords] = useState<string[]>([]);
     const [wordsBefore, setWordsBefore] = useState<string[]>([]);
+    const [indexBefore, setIndexBefore] = useState<number>(0);
     const [wordsAfter, setWordsAfter] = useState<string[]>([]);
+    const [indexAfter, setIndexAfter] = useState<number>(0);
     const [randomWord, setRandomWord] = useState<string>("");
     const [userInput, setUserInput] = useState<string>("");
     const [endGame, setEndGame] = useState<boolean>(false);
@@ -25,8 +27,9 @@ const Game = ({ language }: { language: Language }) => {
             setRandomWord(atob(state.randomWord));
             setWords(state.words);
             setWordsBefore(state.wordsBefore);
+            setIndexBefore(state.indexBefore);
             setWordsAfter(state.wordsAfter);
-            setEndGame(state.endGame);
+            setIndexAfter(state.indexAfter);
         } else {
             fetch(process.env.PUBLIC_URL + language.wordlist)
                 .then((res) => res.json())
@@ -36,7 +39,9 @@ const Game = ({ language }: { language: Language }) => {
                     setRandomWord(data[Math.floor(Math.random() * (data.length - 2)) + 1]);
     
                     setWordsBefore([data[0]])
+                    setIndexBefore(0)
                     setWordsAfter([data[data.length - 1]])
+                    setIndexAfter(data.length - 1)
                 })
                 .catch((error) => console.error("Error loading words:", error));
         }
@@ -48,17 +53,13 @@ const Game = ({ language }: { language: Language }) => {
                 randomWord: btoa(randomWord),
                 words,
                 wordsBefore,
+                indexBefore,
                 wordsAfter,
-                endGame
+                indexAfter
             };
             localStorage.setItem('gameState-${language.code}', JSON.stringify(state));
         }
-    }, [randomWord, words, wordsBefore, wordsAfter, endGame]);
-
-    const resetGame = () => {
-        localStorage.removeItem('gameState-${language.code}');
-        window.location.reload();
-    };
+    }, [randomWord, words, wordsBefore, indexBefore, wordsAfter, indexAfter]);
 
     const triggerConfetti = () => {
         confetti({
@@ -71,7 +72,7 @@ const Game = ({ language }: { language: Language }) => {
     const handleForfeit = () => {
       setEndGame(true);
       setForfeited(true);
-      // Optionally skip confetti
+      localStorage.removeItem('gameState-${language.code}');
     };
 
     // Handle input changes
@@ -86,16 +87,22 @@ const Game = ({ language }: { language: Language }) => {
             if(userInput === randomWord) { // Word is match
                 setEndGame(true);
                 triggerConfetti(); // 🎉 trigger confetti when winning
-            } else if(!words.includes(userInput)) { // Word is not in list
-                setErrorMessage(userInput + ": " + language.i18n.word_not_found); // Set error message
-                setUserInput(""); // Clear input field after submitting
-            } else { // Otherwise
-                if(userInput.localeCompare(randomWord, language.code) < 0) {
-                    setWordsBefore([...wordsBefore, userInput].sort((a, b) => a.localeCompare(b, language.code)))
-                } else {
-                    setWordsAfter([...wordsAfter, userInput].sort((a, b) => a.localeCompare(b, language.code)))
-                }         
-                setUserInput(""); // Clear input field after submitting
+                localStorage.removeItem('gameState-${language.code}');
+            } else {
+                var index = words.indexOf(userInput)
+                if( index === -1) { // Word is not in list
+                    setErrorMessage(userInput + ": " + language.i18n.word_not_found); // Set error message
+                    setUserInput(""); // Clear input field after submitting
+                } else { // Otherwise
+                    if(userInput.localeCompare(randomWord, language.code) < 0) {
+                        setWordsBefore([...wordsBefore, userInput].sort((a, b) => a.localeCompare(b, language.code)))
+                        setIndexBefore((prev) => Math.max(prev, index)); 
+                    } else {
+                        setWordsAfter([...wordsAfter, userInput].sort((a, b) => a.localeCompare(b, language.code)))
+                        setIndexAfter((prev) => Math.min(prev, index));
+                    }         
+                    setUserInput(""); // Clear input field after submitting
+                }
             }
         }
     };
@@ -115,7 +122,7 @@ const Game = ({ language }: { language: Language }) => {
                     {randomWord}
                     {forfeited && <span className="forfeit-label"> ({language.i18n.forfeit_message})</span>}
                     </div>
-                    <button className="replay-button" onClick={() => resetGame()}>
+                    <button className="replay-button" onClick={() => window.location.reload()}>
                         {language.i18n.play_again}
                     </button>
                 </div>
@@ -126,7 +133,7 @@ const Game = ({ language }: { language: Language }) => {
                         value={userInput}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyPress}
-                        placeholder={language.i18n.user_input}
+                        placeholder={language.i18n.user_input.replace("%d", (indexAfter - indexBefore).toString())}
                         className="input-field"
                     />
                     {errorMessage && (
