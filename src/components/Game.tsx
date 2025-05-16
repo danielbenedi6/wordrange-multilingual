@@ -107,6 +107,10 @@ const Game = ({ language }: { language: Language }) => {
         }
     };
 
+    const handleClick = () => {
+        window.open("https://" + language.code + ".wiktionary.com/wiki/" + randomWord.toLocaleLowerCase(), "_blank", "noopener,noreferrer")
+    };
+
     return (
         <div className="container">
             <div className="word-container">
@@ -118,7 +122,7 @@ const Game = ({ language }: { language: Language }) => {
             </div>
             { endGame? (
                 <div className="word-container">
-                    <div className="word correct-word">
+                    <div onClick={handleClick} className="word correct-word">
                     {randomWord}
                     <span className="forfeit-label"> {language.i18n.number_attempts.replace("%d", (wordsAfter.length + wordsBefore.length - 2).toString() )}</span>
                     {forfeited && <span className="forfeit-label"> ({language.i18n.forfeit_message})</span>}
