@@ -21,7 +21,7 @@ const Game = ({ language }: { language: Language }) => {
     const [forfeited, setForfeited] = useState<boolean>(false);
 
     useEffect(() => {
-        const savedGame = localStorage.getItem('gameState-${language.code}');
+        const savedGame = localStorage.getItem('gameState-'+language.code);
         if(savedGame) {
             const state = JSON.parse(savedGame);
             setRandomWord(atob(state.randomWord));
@@ -57,7 +57,7 @@ const Game = ({ language }: { language: Language }) => {
                 wordsAfter,
                 indexAfter
             };
-            localStorage.setItem('gameState-${language.code}', JSON.stringify(state));
+            localStorage.setItem('gameState-'+language.code, JSON.stringify(state));
         }
     }, [randomWord, words, wordsBefore, indexBefore, wordsAfter, indexAfter]);
 
@@ -72,7 +72,7 @@ const Game = ({ language }: { language: Language }) => {
     const handleForfeit = () => {
       setEndGame(true);
       setForfeited(true);
-      localStorage.removeItem('gameState-${language.code}');
+      localStorage.removeItem('gameState-'+language.code);
     };
 
     // Handle input changes
@@ -87,7 +87,7 @@ const Game = ({ language }: { language: Language }) => {
             if(userInput === randomWord) { // Word is match
                 setEndGame(true);
                 triggerConfetti(); // 🎉 trigger confetti when winning
-                localStorage.removeItem('gameState-${language.code}');
+                localStorage.removeItem('gameState-'+language.code);
             } else {
                 var index = words.indexOf(userInput)
                 if( index === -1) { // Word is not in list
