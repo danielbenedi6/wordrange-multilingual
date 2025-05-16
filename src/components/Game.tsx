@@ -134,7 +134,7 @@ const Game = ({ language }: { language: Language }) => {
                         value={userInput}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyPress}
-                        placeholder={language.i18n.user_input.replace("%d", (indexAfter - indexBefore).toString())}
+                        placeholder={language.i18n.user_input.replace("%d", (indexAfter - indexBefore - 1).toString())}
                         className="input-field"
                     />
                     {errorMessage && (
