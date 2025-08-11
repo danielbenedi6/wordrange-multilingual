@@ -34,6 +34,7 @@ const Game = ({ language }: { language: Language }) => {
             fetch(process.env.PUBLIC_URL + language.wordlist)
                 .then((res) => res.json())
                 .then((data) => data.map((word:string) => capitalizeFirstLetter(word)))
+                .then((data) => data.sort((a:string, b:string) => a.localeCompare(b, language.code)))
                 .then((data) => {
                     setWords(data);
                     setRandomWord(data[Math.floor(Math.random() * (data.length - 2)) + 1]);
