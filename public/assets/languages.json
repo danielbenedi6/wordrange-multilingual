@@ -88,5 +88,20 @@
       "forfeit_button": "Ge upp 😅",
       "forfeit_message": "Du gav upp!"
     }
+  },
+  {
+    "name": "한국어",
+    "code": "ko",
+    "flag": "/assets/images/ko.svg",
+    "wordlist": "/assets/wordlist/ko.json",
+    "i18n": {
+      "user_input": "여기에 당신의 추측을 입력하세요... %d개의 옵션이 있습니다!",
+      "word_not_found": "이 단어는 목록에 없습니다. 😱 다시 시도하세요!",
+      "how_to": "## 게임 방법\n\n비밀 단어를 추측하세요! 단어를 입력하고 **Enter**를 누르세요.\n\n- 당신의 단어가 맞으면 이깁니다!\n- 당신의 단어가 비밀 단어보다 **앞**에 오면 '앞'에 추가됩니다.\n- **뒤**에 오면 '뒤'에 추가됩니다.\n- 단어가 사전에 없으면 오류 메시지가 표시됩니다.\n\n비밀 단어를 찾을 때까지 계속 추측하세요!",
+      "play_again": "다시 플레이!",
+      "number_attempts": "당신은 %d번 시도했습니다",
+      "forfeit_button": "포기 😅",
+      "forfeit_message": "당신은 포기했습니다!"
+    }
   }
 ]

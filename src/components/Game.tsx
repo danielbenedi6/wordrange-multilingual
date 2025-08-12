@@ -7,7 +7,6 @@ function capitalizeFirstLetter(val: string) {
     return val.charAt(0).toUpperCase() + val.slice(1);
 }
 
-
 const Game = ({ language }: { language: Language }) => {
     const [words, setWords] = useState<string[]>([]);
     const [wordsBefore, setWordsBefore] = useState<string[]>([]);
@@ -24,7 +23,7 @@ const Game = ({ language }: { language: Language }) => {
         const savedGame = localStorage.getItem('gameState-'+language.code);
         if(savedGame) {
             const state = JSON.parse(savedGame);
-            setRandomWord(atob(state.randomWord));
+            setRandomWord(decodeURIComponent(escape(atob(state.randomWord))));
             setWords(state.words);
             setWordsBefore(state.wordsBefore);
             setIndexBefore(state.indexBefore);
@@ -51,7 +50,7 @@ const Game = ({ language }: { language: Language }) => {
     useEffect(() => {
         if (randomWord) { // Only save if the game has started
             const state = {
-                randomWord: btoa(randomWord),
+                randomWord: btoa(unescape(encodeURIComponent(randomWord))),
                 words,
                 wordsBefore,
                 indexBefore,

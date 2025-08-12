@@ -76,6 +76,7 @@ The word lists used in this project come from high-quality linguistic corpora an
 | 🇬🇷: Greek | [KELLY Word List (CLARIN:EL)](https://clarin.ellak.gr) | A curated list of the most frequent modern Greek words used in learner resources. |
 | :fr: French | [Lexique 3.83](http://www.lexique.org/) | A rich lexical database with frequency, phonology, and morphology data for French. |
 | :de: German | [SUBTLEX-DE](http://crr.ugent.be/programs-data/subtitle-frequencies/subtlex-de) | Frequency-based word list compiled from film subtitles for German. |
+|  🇰🇷 Korean | [Kimchi Reader](https://kimchi-reader.app/) | Frequencyy-based word list. |
 
 ## 🧩 Adding a New Language
 
